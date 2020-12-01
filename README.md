@@ -102,3 +102,15 @@ configs (`config :waffle, signed: true`). The default expiration time is one
 hour but can be changed by setting the `:expires_in` config/option value. The
 value is **the number of seconds** the URL should remain valid for after
 generation.
+
+## GCS object headers
+
+You can specify custom object headers by defining `gcs_object_headers/2` in your definition which returns keyword list or map. E.g.
+
+```
+def gcs_object_headers(_version, {_file, _scope}) do
+  [contentType: "image/jpeg"]
+end
+```
+
+The list of all the supported attributes can be found here: https://hexdocs.pm/google_api_storage/GoogleApi.Storage.V1.Model.Object.html.
